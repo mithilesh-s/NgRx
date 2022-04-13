@@ -1,12 +1,23 @@
 import * as fromUser from './user-reducer';
 import * as fromPost from './post-reducer';
-
+import * as fromProduct from '../reducer/product-reducer'
 import {ActionReducerMap, createSelector} from '@ngrx/store';
+import { RouterState } from '@angular/router';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+
+export interface State {
+  
+}
+export const reducers: ActionReducerMap<State> = {
+    productFeature: fromProduct.ProductReducer
+};
 
 
 export interface RootReducerState {
   users: fromUser.UserReducerState;
   posts: fromPost.PostReducerState;
+  productFeature: fromProduct.ProductState
+  router:RouterReducerState
 
 
  
@@ -15,6 +26,10 @@ export interface RootReducerState {
 export const rootReducer: ActionReducerMap<RootReducerState> = {
   users: fromUser.UserReducer,
   posts: fromPost.PostReducer,
+  productFeature:fromProduct.ProductReducer,
+  router:routerReducer
+
+
 
 };
 

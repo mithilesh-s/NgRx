@@ -24,6 +24,11 @@ import { ShowCardDetailsComponent } from 'src/component/show-card-details/show-c
 import { PostListComponent } from 'src/component/post-list/post-list.component';
 import { PostCardComponent } from 'src/component/post-card/post-card.component';
 import { EffectsModule } from '@ngrx/effects';
+import { ListComponent } from 'src/component/list/list.component';
+import { ProductService } from 'src/services/product.service';
+import { ProductEffect } from 'src/effect/product-effect';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
 
 
 
@@ -45,6 +50,7 @@ import { EffectsModule } from '@ngrx/effects';
     ShowCardDetailsComponent,
     PostListComponent,
     PostCardComponent,
+    ListComponent
 
 
 
@@ -61,11 +67,12 @@ import { EffectsModule } from '@ngrx/effects';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ReactiveFormsModule,
     FormsModule,
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([ProductEffect]),
+    StoreRouterConnectingModule.forRoot()
    
 
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
