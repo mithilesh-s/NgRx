@@ -1,0 +1,15 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+   <form [formGroup]="updateUserFormGroup" (ngSubmit)="updateUserFormGroup.valid&& addOrUpdate()">
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput placeholder="Enter your name">
+        <!-- <mat-error *ngIf="updateUserFormGroup.invalid">Name is required</mat-error> -->
+      </mat-form-field><mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Enter your email">
+        <!-- <mat-error *ngIf="updateUserFormGroup.invalid">Valid email is required</mat-error> -->
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary">{{data?'Update':'Add'}}</button>
+   </form>
+    
+</div>

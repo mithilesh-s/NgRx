@@ -1,0 +1,7 @@
+
+    <mat-card class="card">
+        <h1>{{this.user ? this.user.email : ''}}</h1>
+        <h1>{{this.user ? this.user.name : ''}}</h1>
+        <button (click)="backToListOfUsers()" mat-raised-button color="primary">Back</button>
+    </mat-card>
+    
