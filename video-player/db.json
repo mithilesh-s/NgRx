@@ -1,0 +1,49 @@
+{
+  "video":[
+    {
+      "id":1,
+      "songName":"Tu hi yaar mera",
+      "songImage":"assets/images/image1.png",
+      "singerName":"Arijit Singh",
+      "songUrl":"assets/videos/video1.mp4",
+      "duration":5,
+      "movie":"Pati Patni aur wo"
+    },
+    {
+      "id":2,
+      "songName":"Itni si baat hai",
+      "songImage":"assets/images/image2.png",
+      "singerName":"Arijit Singh",
+      "songUrl":"assets/videos/video.mp4",
+      "duration":4,
+      "movie":"Azhar"
+    },
+    {
+      "id":3,
+      "songName":"Teri mitti",
+      "songImage":"assets/images/image3.png",
+      "singerName":"B Praak",
+      "songUrl":"assets/videos/video3.mp4",
+      "duration":3,
+      "movie":"Keshari"
+    },
+    {
+      "id":4,
+      "songName":"Barish Ban jana",
+      "songImage":"assets/images/image4.png",
+      "singerName":"Payal Dev",
+      "songUrl":"assets/videos/video4.mp4",
+      "duration":7,
+      "movie":"NA"
+    },
+    {
+      "id":5,
+      "songName":"Rata Lambinyan",
+      "songImage":"assets/images/image5.png",
+      "singerName":"Jubin Nautiyal",
+      "songUrl":"assets/videos/video5.mp4",
+      "duration":8,
+      "movie":"Shersingh"
+    }
+  ]
+}
