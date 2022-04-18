@@ -2,11 +2,17 @@
     <app-user-list *ngIf="!loading && !error" [users]="this.users"></app-user-list>
     <mat-spinner *ngIf="loading"></mat-spinner>
 
-    <div *ngIf="error && !loading" fxLayout="column"  fxLayoutAlign="center center" fxLayoutGap="10px">
+    <div *ngIf="error && !loading" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
         <mat-icon>error_outline</mat-icon>
         <span>Error Occured!</span>
-        <button  (click)="tryAgain()" mat-raised-button color="warn">Please Try Again</button>
+        <button (click)="tryAgain()" mat-raised-button color="warn">Please Try Again</button>
     </div>
-    <button *ngIf="!loading && !error"  (click)="addUser()" mat-raised-button color="primary">Add User</button>
-   
+    <div *ngIf="isLogout">
+       <h1>Data are deleted from the store so Api will be called again then data will show!</h1>
+    </div>
+   <div>
+    <button *ngIf="!loading && !error &&!isLogout" (click)="addUser()" mat-raised-button color="primary">Add User</button>
+    <button id="logout" *ngIf="!loading && !error&&!isLogout" (click)="logout()" mat-raised-button color="warn">Logout</button>
+   </div>
+
 </div>

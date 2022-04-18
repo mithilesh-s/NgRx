@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import {takeWhile } from 'rxjs';
+import { UserEnum, UserLogoutAction } from 'src/action/user-action';
 import { UserUpdateComponent } from 'src/component/user-update/user-update.component';
 import { User } from 'src/model/User';
+import { RootReducerState } from 'src/reducer';
 import { MyRepositoryService } from 'src/services/my-repository.service';
 
 @Component({
@@ -15,8 +18,9 @@ export class UserComponent implements OnInit,OnDestroy {
   loading:boolean=false;
   error:boolean=false;
   isAlive:boolean=true;
+  isLogout:boolean=false;
 
-  constructor(private myRepositoryService:MyRepositoryService, private matDialog:MatDialog) { }
+  constructor(private myRepositoryService:MyRepositoryService, private matDialog:MatDialog,private store:Store<RootReducerState>) { }
 
   ngOnInit() {
     this.fetchData();
@@ -50,6 +54,10 @@ export class UserComponent implements OnInit,OnDestroy {
     this.matDialog.open(UserUpdateComponent,{
      width:'300px'    
     })
+  }
+  logout(){
+    this.isLogout=true;
+   this.store.dispatch(new UserLogoutAction) 
   }
 
 }

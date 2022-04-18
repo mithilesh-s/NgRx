@@ -1,39 +1,65 @@
 import * as fromUser from './user-reducer';
 import * as fromPost from './post-reducer';
 import * as fromProduct from '../reducer/product-reducer'
-import {ActionReducerMap, createSelector} from '@ngrx/store';
+import {ActionReducer, ActionReducerMap, createSelector, INIT, MetaReducer} from '@ngrx/store';
 import { RouterState } from '@angular/router';
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { UserEnum } from 'src/action/user-action';
+import { environment } from 'src/environments/environment';
 
-export interface State {
-  
-}
-export const reducers: ActionReducerMap<State> = {
-    productFeature: fromProduct.ProductReducer
-};
+
 
 
 export interface RootReducerState {
   users: fromUser.UserReducerState;
   posts: fromPost.PostReducerState;
-  productFeature: fromProduct.ProductState
+  products: fromProduct.ProductState
   router:RouterReducerState
 
 
+
+
+     
  
 }
 
 export const rootReducer: ActionReducerMap<RootReducerState> = {
   users: fromUser.UserReducer,
   posts: fromPost.PostReducer,
-  productFeature:fromProduct.ProductReducer,
+  products:fromProduct.ProductReducer,
   router:routerReducer
 
 
 
 };
 
+// Including meta reducer in the project
 
+const debugMeta = (reducer: ActionReducer<any>): ActionReducer<any> => {
+  return (state, action) => {
+    console.log('state', state);
+    console.log('action', action);
+
+
+    return reducer(state, action);
+  };
+};
+
+
+// erasing all the data from the current state using meata reducer
+
+const logoutMeta = (reducer: ActionReducer<any>): ActionReducer<any> => {
+  return (state, action) => {
+    if (action?.type === UserEnum.USER_LOGOUT) {
+      return reducer(undefined, { type: INIT });
+    }
+    return reducer(state, action);
+  };
+};
+
+export const metaReducers: MetaReducer<RootReducerState>[] = environment.production
+  ? [logoutMeta]
+  : [debugMeta, logoutMeta];
 
 export const getUserState = (state: RootReducerState) => state.users;
 export const getUserLoaded = createSelector(getUserState, fromUser.getLoaded);

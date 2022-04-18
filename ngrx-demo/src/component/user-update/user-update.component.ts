@@ -12,7 +12,9 @@ import { MyRepositoryService } from 'src/services/my-repository.service';
 })
 export class UserUpdateComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder,
+  private formBuilder:FormBuilder
+
+  constructor(
     private dialogRef:MatDialogRef<UserUpdateComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: User,private myRepo:MyRepositoryService) {
    }

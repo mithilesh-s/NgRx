@@ -7,7 +7,8 @@ export enum UserEnum{
   USER_LIST_ERROR = 'user list error',
   USER_DELETE = 'user delete',
   USER_UPDATE = 'user update',
-  USER_ADD = 'user add'
+  USER_ADD = 'user add',
+  USER_LOGOUT="user logout"
 }
 
 
@@ -34,5 +35,9 @@ export class UserUpdateAction{
 export class UserAddAction{
     readonly type = UserEnum.USER_ADD
     constructor(public payload?: {data:User }) {}
+  }
+export class UserLogoutAction{
+    readonly type = UserEnum.USER_LOGOUT
+    
   }
   

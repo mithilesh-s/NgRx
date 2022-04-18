@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { YoutubeLayoutComponent } from './youtube-layout.component';
 
@@ -8,7 +11,8 @@ describe('YoutubeLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ YoutubeLayoutComponent ]
+      declarations: [ YoutubeLayoutComponent ],
+      imports: [RouterTestingModule,HttpClientTestingModule,RouterModule.forRoot([])]
     })
     .compileComponents();
   });

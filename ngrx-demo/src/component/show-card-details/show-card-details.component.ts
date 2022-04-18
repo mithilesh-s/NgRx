@@ -4,6 +4,7 @@ import { filter, map, switchMap, takeWhile } from 'rxjs';
 import { User } from 'src/model/User';
 import { MyRepositoryService } from 'src/services/my-repository.service';
 
+
 @Component({
   selector: 'app-show-card-details',
   templateUrl: './show-card-details.component.html',

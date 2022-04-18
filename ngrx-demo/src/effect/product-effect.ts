@@ -14,7 +14,7 @@ import { of } from "rxjs/internal/observable/of";
 import { empty } from "rxjs/internal/observable/empty";
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ProductEffect {
 
 
@@ -30,8 +30,6 @@ export class ProductEffect {
       if (loaded) {
         return empty();
       }
-
-      console.log('LOADING DATA', loaded);
 
       return this.productService.getProducts().pipe(
         map((products) => {

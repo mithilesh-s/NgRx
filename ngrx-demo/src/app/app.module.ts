@@ -14,8 +14,8 @@ import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { UserCardComponent } from 'src/component/user-card/user-card.component';
 import { UserListComponent } from 'src/component/user-list/user-list.component';
-import { StoreModule } from '@ngrx/store';
-import { rootReducer } from 'src/reducer';
+import { Store, StoreModule } from '@ngrx/store';
+import { metaReducers, rootReducer } from 'src/reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { UserUpdateComponent } from 'src/component/user-update/user-update.component';
@@ -28,6 +28,8 @@ import { ListComponent } from 'src/component/list/list.component';
 import { ProductService } from 'src/services/product.service';
 import { ProductEffect } from 'src/effect/product-effect';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RouterSerializer } from 'src/serializer/router-serializer';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -62,17 +64,20 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
-    FlexModule,
-    StoreModule.forRoot(rootReducer),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ReactiveFormsModule,
     FormsModule,
+    FlexModule,
+    RouterModule.forRoot([]),
+    StoreModule.forRoot(rootReducer,{metaReducers:metaReducers}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([ProductEffect]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot({
+      serializer:RouterSerializer
+    })
    
 
   ],
-  providers: [ProductService],
+  providers: [ProductService,ProductEffect,Store ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

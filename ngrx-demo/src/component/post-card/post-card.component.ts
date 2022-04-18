@@ -10,6 +10,7 @@ export class PostCardComponent implements OnInit {
   @Input() post!: Post;
   constructor() { }
 
+
   ngOnInit(): void {
   }
 

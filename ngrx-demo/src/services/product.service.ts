@@ -9,7 +9,7 @@ import {throwError} from "rxjs/internal/observable/throwError";
 
 
 
-@Injectable()
+@Injectable({providedIn:'root'})
 export class ProductService {
  private productsUrl = 'https://dl.dropboxusercontent.com/s/q8ofiulcb1wsxqe/as.json';
   constructor(private http: HttpClient) {
