@@ -1,11 +1,20 @@
 .card{
-    height: 260px;
-    width: 367px;
+    height: 255px;
+    width: 366px;
+    border: 2px solid rgb(240, 12, 172);
 }
 img{
-    height: 204px;
-    width: 366px;
+    height: 251px;
+    width: 362px;
+    z-index: 1;
+    
 }
-button{
-    margin-left: 2px;
+
+
+#play-button{
+    height: 55px;
+    width: 55px;
+    margin-top: -290px;
+    margin-left: 150px;
+    z-index: 2;
 }

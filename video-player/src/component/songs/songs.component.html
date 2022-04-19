@@ -1,7 +1,10 @@
+<router-outlet></router-outlet>
 <div class="container  ">
+
     <div class="item">
         <h3>Video list</h3>
-        <div class="d-flex mb-3" *ngFor="let song of songs;let i=index">
+        <div class="d-flex mb-3"  *ngFor="let song of songs;let i=index">
+           
             <app-thumbnail [image]="song"></app-thumbnail>
             <app-video-details [songDetail]="song"></app-video-details>
         </div>

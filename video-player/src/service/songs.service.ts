@@ -7,7 +7,7 @@ import { Injectable, OnInit } from '@angular/core';
 export class SongsService implements OnInit {
 
   constructor(private http:HttpClient ) { }
-  private baseUrl="http://localhost:3000/video"
+  private baseUrl="http://localhost:3000/videos"
   ngOnInit(): void {
     
   }
