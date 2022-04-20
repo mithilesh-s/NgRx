@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-thumbnail',
@@ -9,12 +9,22 @@ export class ThumbnailComponent implements OnInit {
 
   @Input() image:any
 
-  constructor() { }
+  constructor(private vcr:ViewContainerRef,private cfr:ComponentFactoryResolver) { }
 
   songs:any
 
   ngOnInit(): void {
      
   }
+
+  async playVideo(){
+   
+    this.vcr.clear();
+    const {VideoPlayerComponent}=await import('../video-player/video-player.component')
+    this.vcr.createComponent(
+      this.cfr.resolveComponentFactory(VideoPlayerComponent)
+    )
+  }
+
 
 }

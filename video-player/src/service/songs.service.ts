@@ -17,6 +17,10 @@ export class SongsService implements OnInit {
    return this.http.get(this.baseUrl)
   }
 
+  getSong(id:any){
+    return this.http.get(`${this.baseUrl}/`+id)
+  }
+
 
 
 

@@ -1,9 +1,17 @@
 
     
-   <div class="d-flex">
-    <img src="assets/images/back.png" routerLink="/songs" alt="">
+   <div *ngIf="!showError" class="d-flex">
+    <img src="assets/images/back.png" routerLink="/video-list" alt="">
     <video poster="{{songImage}}" src="{{songUrl}}" muted   loop controls>
         Your browser does not support the video tag.
     </video>
+</div>
+
+
+<div class="error_image" *ngIf="showError">
+  <div>
+     <img id="errorImage" src="assets/images/error.png" alt="">
+   </div>
+   <button class="btn btn-warning mt-2"  routerLink="/video-list">Go to Songs</button>
 </div>
 

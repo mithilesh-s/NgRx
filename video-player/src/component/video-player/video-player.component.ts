@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Song } from 'src/model/Song';
 import { SongsService } from 'src/service/songs.service';
 
 @Component({
@@ -10,36 +9,32 @@ import { SongsService } from 'src/service/songs.service';
 })
 export class VideoPlayerComponent implements OnInit {
 
-  constructor(private activatedRoute:ActivatedRoute,private songsService:SongsService) { }
-  id:any
-  songs:any
-  song:any
-  songUrl:any
-  songImage:any
+  constructor(private activatedRoute: ActivatedRoute, private songsService: SongsService) { console.log("video player loadded.");
+  }
+  id: any
+  song: any
+  songUrl: string = ''
+  songImage: string = ''
+  showError: boolean = false;
 
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(res => {
+      this.id = res.get('id')
+    });
 
-      this.activatedRoute.paramMap.subscribe(res=>{
-        this.id=res.get('id')
-       
-      });
-
-      this.songsService.getSongs().subscribe(res=>{
-        this.songs=res;
-        this.song=this.songs.find((song:any)=>this.id==song.id)
-        this.songImage=this.song.songImage;
-        this.songUrl=this.song.songUrl
+    this.songsService.getSong(this.id).subscribe(res => {
+      this.song = res;
+      console.log(this.song);
+      this.songImage = this.song.songImage;
+      this.songUrl = this.song.songUrl
+    },
+      () => {
+        if(!this.song){
+          this.showError = true;
+        }
       })
-
-      console.log(this.id)
-      console.log(this.songs);
-      
-
-
-      
-
-}
+  }
 
 
 }

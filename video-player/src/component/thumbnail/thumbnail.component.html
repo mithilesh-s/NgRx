@@ -1,7 +1,6 @@
 <div class="card shadow">
     <div>
         <img  src='{{image.songImage}}' alt="">
-        <!-- <button class="btn btn-primary mt-2 " routerLink="/video/{{image.id}}">Play</button> -->
-        <img id="play-button" src="assets/images/play-button.png" routerLink="/video/{{image.id}}" alt="">
+        <img id="play-button" src="assets/images/play-button.png" (change)="playVideo()" routerLink="/video/{{image.id}}" alt="">
     </div>
 </div>

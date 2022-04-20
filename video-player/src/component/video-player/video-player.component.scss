@@ -1,15 +1,39 @@
 video {
-    display: block;
-    margin: auto;
-    width:1441px;
-    height:822px;
-    // border:2px solid red
-}
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+ 
+    width: 1000px;
+    border: 3px solid red;
+    border-radius: 3%;
+  }
+    
 
 
 img{
     height: 70px;
     margin-top: 10px;
-    // margin-left: 150px;
+    
+}
 
+#errorImage{
+    height:300px;
+    border:3px solid red;
+    border-radius: 3%;
+}
+.error_image {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.show{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    margin-left: 100px;
 }

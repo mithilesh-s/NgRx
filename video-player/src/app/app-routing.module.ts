@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SongsComponent } from 'src/component/songs/songs.component';
-import { VideoPlayerComponent } from 'src/component/video-player/video-player.component';
+import { AuthGuardService } from 'src/service/auth-guard.service';
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'songs',pathMatch:'full'},
-  {path:'songs',component:SongsComponent},
-  {path:"video/:id",component:VideoPlayerComponent},
+  {
+    path: '',
+    loadChildren: () => import('../module/song/song.module').then(m => m.SongModule)
+ }
 
   
 ];
